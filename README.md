@@ -37,3 +37,10 @@ At this point the app consists of an index.html file and nothing else. It shows 
 
 The remainder of the typical phonegap apps consists of an extension of the html file to display several pages, if required, and js code located in www/js/.  
 The generation of separate pages is accomplished simply by making various divs visible or invisible by calling js functions triggered by navigation menu item clicks. 
+
+### Aide Mémoire - App Name and Adaptive Icon 
+The name is set in `config.xml`: <name>BB05</name>
+The icon is provided in a number of sizes in  
+ `www/res/icon/android/mipmap-hdpi` etc  
+ To generate adaptable android icons, use `Android Asset Studio`.
+ There seems to be no way to generate all of the icons and splash screens for all platforms in a useful form. 
