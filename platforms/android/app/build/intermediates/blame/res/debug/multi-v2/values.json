@@ -13,9 +13,9 @@
                     "to": {
                         "startLines": "3,4,5",
                         "startColumns": "4,4,4",
-                        "startOffsets": "145,209,251",
-                        "endColumns": "63,41,58",
-                        "endOffsets": "204,246,305"
+                        "startOffsets": "145,209,253",
+                        "endColumns": "63,43,58",
+                        "endOffsets": "204,248,307"
                     }
                 },
                 {
