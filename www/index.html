@@ -29,12 +29,12 @@
         <div class="modal-content">
             <h3 id="dialog-header" class="left-align">Modal Header</h3>
             <p id="dialog-text" class="left-align flow-text">A bunch of text</p>
-            <a id="ok-button" href="javascript:void(0);" class="modal-close waves-effect waves-green btn-large" onclick="okModalClicked();"><span
-                    id="ok-span">OK</span></a>
+            <a id="ok-button" href="javascript:void(0);" class="modal-close waves-effect waves-green btn-large"
+                onclick="okModalClicked();"><span id="ok-span">OK</span></a>
             <a id="yes-button" href="javascript:void(0);" class="modal-close waves-effect waves-green btn-large"
                 onclick="yesModalClicked();"><span id="yes-span">Yes</span></a>
-            <a id="no-button" href="javascript:void(0);" class="modal-close waves-effect waves-green btn-large" onclick="noModalClicked();"><span
-                    id="no-span">No</span></a>
+            <a id="no-button" href="javascript:void(0);" class="modal-close waves-effect waves-green btn-large"
+                onclick="noModalClicked();"><span id="no-span">No</span></a>
         </div>
     </div>
 
@@ -59,18 +59,53 @@
     </nav>
 
 
-    <div 
-       
-    </div>
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js-external/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js-external/materialize.min.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/globals.js"></script>
+    <script type="text/javascript" src="js/messaging.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/bluetooth.js"></script>
+    <script type="text/javascript" src="js/director.js"></script>
     <script type="text/javascript" src="js/ModalDialog.js"></script>
+    <script type="text/javascript" src="js/record.js"></script>
+    <script type="text/javascript" src="js/bidding.js"></script>
+    <script type="text/javascript" src="js/box.js"></script>
+    <script type="text/javascript" src="js/compass.js"></script>
+    <script type="text/javascript" src="js/board.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //Materialize Initializations
+            $('.sidenav').sidenav();
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, {
+                inDuration: 0,
+                outDuration: 0,
+                startingTop: 0,
+                endingTop: 0
+            });
+            var dropdowns = document.querySelectorAll('.dropdown-trigger');
+            for (var i = 0; i < dropdowns.length; i++) {
+                M.Dropdown.init(dropdowns[i], {
+                    constrainWidth: false
+                });
+            }
+            elems = document.querySelectorAll('select');
+            instances = M.FormSelect.init(elems);
+            $('select').formSelect();
+
+            elems = document.querySelectorAll('.timepicker');
+            instances = M.Timepicker.init(elems);
+
+        });
+    </script>
 
     <!--This must stay at the very bottom to assure that everything is loaded before to any js action-->
     <script type="text/javascript">
+        console.log("Calling App Init");
         app.initialize();
     </script>
 </body>

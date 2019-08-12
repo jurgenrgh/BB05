@@ -1,0 +1,118 @@
+toc:
+  - name: bidding.js
+    description: Functions responding to user Bidding Box actions
+    children:
+      - handleTricksBid
+      - handleSuitBid
+      - handleCalls
+      - handleSubmitCall
+      - checkEnableSubmit
+      - cancelCurrentBid
+      - confirmSelectedBid
+      - acceptLocalBid
+      - handleFinalContract
+      - getLastBidderIx
+      - getContract
+  - name: Bluetooth.js
+    description:
+        A js file containing the Bluetooth Functions
+        Mainly called from BluetoothSettings.html  
+    children:
+       - initBtSettingsPage
+       - getBtDevices
+       - assignBtFunction
+       - makeBtConnection
+       - startBtListening
+       - onBtAcceptConnectionHandler
+       - chainBtClientConnection
+       - tryBtClientConnection
+       - setPageBtConnectionState 
+       - setBtConnectionState
+       - generalBtReset
+       - doBtReset
+       - findNextUnconnectedClient
+  - name: board.js
+    description: Class describing an element of the boards[] array
+    children:
+      - Board  
+      - boardClassTest 
+  - name: Box.js    
+    description:
+        Functions to manage the Bidding Box appearance and setup
+    children:    
+      - handleNewBoard
+      - selectNewBoard
+      - startNewBoard
+      - handleBoxReset
+      - resetBiddingBoxPage
+      - clearBidBox
+      - prepBidBox
+      - initBiddingBoxPageSettings
+      - handleBoardNumberChange
+      - handleDisplayBoardNumberChange
+      - handleDisplayBoard
+      - enableBidButton
+      - disableBidButton
+      - selectBidButton
+      - unselectBidButton
+      - enableHigherSuitBids
+      - unselectCallButtons
+      - prepSuitBids
+  - name: compass.js
+    description:
+        The "Compass" is an SVG that appears at the upper lh corner
+        of the Bidding Box Page
+    children:
+      - drawCompass        
+  - name: index.js
+    description: App level initializations
+    children:
+      - app
+      - showPage
+      - hideKeyboard 
+  - name: record.js
+    description: Module describing the bidding record 
+    children:
+      - Bid
+      - makeBiddingRecordEntry
+      - drawBiddingRecordTable
+      - initBiddingRecord
+      - updateBiddingRecord
+      - makeNewBiddingRecordEntry
+      - setCurrentBiddingRecordCell
+      - setDirectorPageLastBid
+      - setBiddingRecordCell
+      - acceptIncomingBid
+      - getbStat
+      - promptBidder
+      - promptNonBidder
+      - bidNextBoard
+      - recordNewBid
+      - hiliteBiddingRecordCell
+      - unhiliteBiddingRecordCell
+      - makeBiddingRecordEntry
+  
+  - name: director.js
+    description: 
+      A seperate table for all of the director controls
+    children:
+      - initDirSettingsPage
+      - handleSeatChange
+      - doSeatChange
+      - stopClocks
+      - backUpOneBid
+      - initBoardsDisplay
+  - name: ModalDialog.js
+    description:
+       This is a simple modal overlay containing a text message
+       and 0, 1 or 2 buttons (ok; yes/no).
+       There is a version with callbacks.
+    children:
+      - popupBox
+      - popupBoxTimed
+      - popupBoxCallback
+      - hidePopupBox
+      - okModalClicked
+      - yesModalClicked
+      - noModalClicked
+          
