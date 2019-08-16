@@ -1,13 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
+ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
 MERGED from [:CordovaLib] J:\PhoneGapApps\BB05\platforms\android\CordovaLib\build\intermediates\manifests\full\debug\AndroidManifest.xml:20:1-27:12
-INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:2:102-135
 		INJECTED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml
@@ -138,3 +138,11 @@ uses-permission#android.permission.VIBRATE
 ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:25:5-66
 	android:name
 		ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:25:22-63
+uses-permission#android.permission.BLUETOOTH
+ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:26:5-68
+	android:name
+		ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:26:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:27:5-74
+	android:name
+		ADDED from J:\PhoneGapApps\BB05\platforms\android\app\src\main\AndroidManifest.xml:27:22-71
