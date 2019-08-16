@@ -343,7 +343,7 @@ function sendBid(rcvCode, brdIx, rndIx, bidIx) {
     sendMessage("this", rcvSeat, "new-bid", msgText);
 }
 
-/*
+/**
  * @description
  * The player can alert either his screenmate(M) or both opponents (B)
  * The alert refers to either her own bid or partner's last bid 

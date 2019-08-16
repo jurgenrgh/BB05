@@ -1,4 +1,4 @@
-#Mon Aug 12 23:29:56 CEST 2019
+#Fri Aug 16 19:21:46 CEST 2019
 base.0=J\:\\PhoneGapApps\\BB05\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

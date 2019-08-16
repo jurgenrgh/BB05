@@ -87,6 +87,10 @@
             {
               "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"NetworkingBluetooth\"><param name=\"android-package\" value=\"cordova.plugin.networking.bluetooth.NetworkingBluetooth\" /></feature>",
+              "count": 1
             }
           ],
           "/widget": [
@@ -118,7 +122,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-              "count": 2
+              "count": 3
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
@@ -142,6 +146,14 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
               "count": 1
             }
           ],
@@ -233,6 +245,9 @@
       "PACKAGE_NAME": "com.phonegap.helloworld"
     },
     "cordova-plugin-zip": {
+      "PACKAGE_NAME": "com.phonegap.helloworld"
+    },
+    "cordova-plugin-networking-bluetooth": {
       "PACKAGE_NAME": "com.phonegap.helloworld"
     }
   },
@@ -847,6 +862,19 @@
       "clobbers": [
         "zip"
       ]
+    },
+    {
+      "id": "cordova-plugin-networking-bluetooth.CDVNetEvent",
+      "file": "plugins/cordova-plugin-networking-bluetooth/www/CDVNetEvent.js",
+      "pluginId": "cordova-plugin-networking-bluetooth"
+    },
+    {
+      "id": "cordova-plugin-networking-bluetooth.NetworkingBluetooth",
+      "file": "plugins/cordova-plugin-networking-bluetooth/www/NetworkingBluetooth.js",
+      "pluginId": "cordova-plugin-networking-bluetooth",
+      "clobbers": [
+        "networking.bluetooth"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -872,6 +900,7 @@
     "cordova-plugin-statusbar": "2.1.3",
     "cordova-plugin-vibration": "2.1.6",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-zip": "3.1.0"
+    "cordova-plugin-zip": "3.1.0",
+    "cordova-plugin-networking-bluetooth": "1.0.3"
   }
 }

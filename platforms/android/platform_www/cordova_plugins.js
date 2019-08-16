@@ -609,6 +609,19 @@ module.exports = [
     "clobbers": [
       "zip"
     ]
+  },
+  {
+    "id": "cordova-plugin-networking-bluetooth.CDVNetEvent",
+    "file": "plugins/cordova-plugin-networking-bluetooth/www/CDVNetEvent.js",
+    "pluginId": "cordova-plugin-networking-bluetooth"
+  },
+  {
+    "id": "cordova-plugin-networking-bluetooth.NetworkingBluetooth",
+    "file": "plugins/cordova-plugin-networking-bluetooth/www/NetworkingBluetooth.js",
+    "pluginId": "cordova-plugin-networking-bluetooth",
+    "clobbers": [
+      "networking.bluetooth"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -636,7 +649,8 @@ module.exports.metadata =
   "cordova-plugin-statusbar": "2.1.3",
   "cordova-plugin-vibration": "2.1.6",
   "cordova-plugin-whitelist": "1.2.2",
-  "cordova-plugin-zip": "3.1.0"
+  "cordova-plugin-zip": "3.1.0",
+  "cordova-plugin-networking-bluetooth": "1.0.3"
 };
 // BOTTOM OF METADATA
 });
