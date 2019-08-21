@@ -6,6 +6,8 @@
 //
 // Global colors are controlled from CSS
 // The CSS values will override the colors listed here
+//
+//
 var mainBgColor = '#26a69a';
 var modalBgColor = '#bf360C';
 var hiliteBidColor = '#1A237E';
@@ -163,23 +165,26 @@ for (i = 0; i < maxBoards; i++) {
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////
-// Call Object: The content of a table cell
-// tricks: 0,1,....,7
-// suit: "C", "D", "H", "S", "NT" if 0 != tricks
-// suit: "empty" ("&nbsp;"),"blank" ("&ndash;") , "Pass", "X", "XX" if tricks = 0
-// alert: true/false except for "blank" and "empty"
-// "blank" ("&ndash;")means diagram slot empty because dealer later in rotation
-// "empty"(&nbsp;) means no bid yet
-// Callable as call = new callObj(t,s,a);
-// 
+/**
+ * @description 
+ * Call Object: The content of a table cell
+ * tricks: 0,1,....,7
+ * suit: "C", "D", "H", "S", "NT" if 0 != tricks
+ * suit: "empty" ("&nbsp;"),"blank" ("&ndash;") , "Pass", "X", "XX" if tricks = 0
+ * alert: true/false except for "blank" and "empty"
+ * "blank" ("&ndash;")means diagram slot empty because dealer later in rotation
+ * "empty"(&nbsp;) means no bid yet
+ * Callable as call = new callObj(t,s,a);
+ * 
+ * @param {int} tricks 
+ * @param {string} suit 
+ * @param {Bool} alert 
+ */
 function callObj(tricks, suit, alert) {
   this.tricks = tricks;
   this.suit = suit;
   this.alert = alert;
 }
-
 
 //////////////////////////////////////////////////////////////
 // Bluetooth Names and addresses - BT global variables
@@ -189,7 +194,6 @@ var disconnectedColor = "red";
 var connectedColor = "green";
 var waitingColor = "yellow";
 var unsetColor = "transparent";
-
 var testFlag = true;
 
 //The Tablet Object 
@@ -235,9 +239,10 @@ var nbrConnectedClients = 0;
 var relaySecDelay = 3;
 var relayRepCount = 32;
 
-// Some color variables are defined in the :root element in index.css
-// This routine fetches them for use in js
-//
+/**
+ * Some color variables are defined in the :root element in index.css
+ * This routine fetches them for use in js
+ */
 function getCommonCssColors() {
   var root = document.querySelector(':root');
   var rootStyles = getComputedStyle(root);

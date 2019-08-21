@@ -217,8 +217,6 @@ function recordClassTest() {
     testBid.unhiliteBiddingRecordCell();
 }
 
-
-
 /**
  * Draw an empty table with header and nRows rows of 4 cells <br>
  * @param {number} nRows Number of rows to be shown

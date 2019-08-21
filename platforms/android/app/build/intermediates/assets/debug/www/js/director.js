@@ -113,24 +113,22 @@ function doSeatChange(seat){
     console.log("setting new seat = " + seat, thisSeatIx);
     resetBiddingBoxPage();
 }
-
-// This now directly in index.html
-//document.getElementById("input-table-number").onchange = function () {
-//    handleTableNumberChange();
-//};
-
+/**
+ * Called directly from index.html
+ * document #input-table-number onchange 
+ * to change the table number
+ */
 function handleTableNumberChange() {
     var x = document.getElementById("input-table-number");
     tableIx = x.value - 1;
     resetBiddingBoxPage();
     console.log("New Table Number ", x.value);
 }
-
-// This now directly in index.html
-//document.getElementById("input-section-letter").onchange = function () {
-//    handleSectionLetterChange();
-//};
-
+/**
+ * Called directly from index.html
+ * document #input-section-letter onchange
+ * to change the Section id letter
+ */
 function handleSectionLetterChange() {
     var x = document.getElementById("input-section-letter");
     sectionId = x.value;
@@ -138,104 +136,109 @@ function handleSectionLetterChange() {
     console.log("Section Id ", x.value);
 }
 
-// This now directly in index.html
-//document.getElementById("input-first-board").onchange = function () {
-//    handleFirstBoardChange();
-//};
-
+/**
+ * Called directly from index.html
+ * document #input-first-board onchange
+ * to set first board of a series   
+ */
 function handleFirstBoardChange() {
     var x = document.getElementById("input-first-board");
     firstBoardNbr = x.value;
     console.log("First Board ", x.value);
 }
 
-// This now directly in index.html
-document.getElementById("input-last-board").onchange = function () {
-    handleLastBoardChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #input-last-board onchange
+ * to change last board of the series
+ */
 function handleLastBoardChange() {
     var x = document.getElementById("input-last-board");
     lastBoardNbr = x.value;
     console.log("Last Board ", x.value);
 }
 
-// This now directly in index.html
-document.getElementById("input-hand-minutes").onchange = function () {
-    handleHandMinutesChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #input-hand-minutes onchange
+ * To set the minutes per hand
+ */
 function handleHandMinutesChange() {
     var x = document.getElementById("input-hand-minutes");
     minPerHand = x.value;
     console.log("Minutes per Hand ", x.value);
 }
 
-// This now directly in index.html
-document.getElementById("input-session-minutes").onchange = function () {
-    handleSessionMinutesChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #input-session-minutes onchange
+ * To set the minutes per session
+ */
 function handleSessionMinutesChange() {
     var x = document.getElementById("input-session-minutes");
     minPerSession = x.value;
     console.log("Minutes per Session ", x.value);
 }
 
-// This now directly in index.html
-document.getElementById("alert-own-bids").onchange = function () {
-    handleAlertOwnChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #alert-own-bids onchange
+ * To set that own bids alerted
+ */
 function handleAlertOwnChange() {
     var x = document.getElementById("alert-own-bids");
     alertOwn = x.checked;
     console.log("Alert Own ", x.checked);
 }
 
-// This now directly in index.html
-document.getElementById("alert-partner-bids").onchange = function () {
-    handleAlertPartnerChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #alert-partner-bids onchange
+ * To set that partner's bids to be alerted
+ */
 function handleAlertPartnerChange() {
     var x = document.getElementById("alert-partner-bids");
     alertPartner = x.checked;
     console.log("Alert Partner ", x.checked);
 }
 
-// This now directly in index.html
-document.getElementById("alert-screenmate").onchange = function () {
-    handleAlertScreenmateChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #alert-screenmate onchange
+ * To set that screenmate to be alerted
+ */
 function handleAlertScreenmateChange() {
     var x = document.getElementById("alert-screenmate");
     alertScreenmate = x.checked;
     console.log("Alert Screenmate ", x.checked);
 }
 
-// This now directly in index.html
-document.getElementById("alert-both-opps").onchange = function () {
-    handleAlertBothOppsChange();
-};
-
+/**
+ * Called directly from index.html
+ * document #alert-both-opps onchange
+ * To set that both opps to be alerted
+ */
 function handleAlertBothOppsChange() {
     var x = document.getElementById("alert-both-opps");
     alertBothOpps = x.checked;
     console.log("Alert Both Opps", x.checked);
 }
 
+/**
+ * Called directly from index.html
+ * To set who transfers the tray, ew or ns
+ * @param {string} "ew" or "ns"
+ */
 function handleTrayTransferChange(par) {
     trayTransfer = par;
     console.log("Tray Transfer", par);
 }
 
-// This now directly in index.html
-document.getElementById("rotate-board").onchange = function () {
-    handleRotateBoardChange();
-};
-
+/**
+ * Called directly from index.html
+ * To set whether board rotated
+ * This can be necessary to correct an error
+ */
 function handleRotateBoardChange() {
     var x = document.getElementById("rotate-board");
     rotatedBoard = x.checked;
@@ -246,6 +249,11 @@ function handleRotateBoardChange() {
 // Player Settings  //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 //
+/**
+ * Called directly from index.html
+ * To set whether bid to be reconfirmed
+ * @param {Bool} true/false
+ */
 function handleBidReconfirmChange(par) {
     reconfirmBidSubmission = par;
 }

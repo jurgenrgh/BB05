@@ -113,51 +113,6 @@ function sendSeatIdToServer() {
 }
 
 /**
- * @description 
- * Called when a message was received, i.e. in response to onReceive Event <br> 
- * Outputs the raw message string to the HTML field on the BT page    <br>
- * objReceived = JSON object <= parsed JSON string <= receiveInfo.data  <br>
- * Calls msgInterpreter which handles input acc to message content  <br>
- * The message text contains the "msg type" information, i.e. what to do next <br>
- * @param {arrayBuffer} receiveInfo 
- */
-function onBtReceiveHandler(receiveInfo) {
-    var socketId = receiveInfo.socketId;
-    var strReceived = stringFromArrayBuffer(receiveInfo.data);
-    var objReceived = {};
-
-    var textField = document.getElementById("msg-rcvd");
-    textField.value = "";
-
-    //console.log("Data received: ", strReceived);
-    objReceived = JSON.parse(strReceived);
-    //console.log("Obj received: ", objReceived);
-
-    // Message into Input field
-    textField.value = "From " + objReceived.from + ": " + objReceived.text;
-
-    M.updateTextFields();
-    M.textareaAutoResize(textField);
-    // Process the Message 
-    msgInterpreter(socketId, strReceived);
-}
-
-/**
- * @description
- * Response to onReceiveError Listener
- * 
- * @param {string} errorInfo Raw Text Message
- */
-function onBtReceiveError(errorInfo) {
-    console.log("BT Error from Listener", errorInfo.errorMessage, errorInfo.socketId, errorInfo);
-    popupBox("Bluetooth Receive Error (Listener)", errorInfo.errorMessage + " socket " + errorInfo.socketId, "bt-error", "OK", "", "");
-
-    // if (errorInfo.socketId !== socketId) {
-    //     return;
-    //}
-}
-
-/**
  * @description
  * Most incoming messages require action <br>    
  * An example is the msg that communicates the client name  <br>  
@@ -175,7 +130,7 @@ function msgInterpreter(socketId, strMsg) {
     var text;
     var rcvdTextObj;
 
-    console.log("Msg Interpreter Socket: ", socketId, strMsg);
+    console.log("Msg Interpreter Socket: ", socketId, "Msg: ", strMsg);
     console.log("Msg Interpreter Msg: ", objMsg);
 
     ////////////////////////////////////////////////////////////////
@@ -193,7 +148,8 @@ function msgInterpreter(socketId, strMsg) {
                 tablet[i].socket = socketId;
                 tablet[i].seatIx = tabSeatIx;
                 clientIx = i;
-                console.log("socket set socketId, tabIx", socketId, i, tablet[i].name, tablet[i].type, objMsg.text, objMsg.from);
+                console.log("Confirm Connection ",
+                 "socketId= ", socketId, "TabIx= ", i, tablet[i], objMsg.text, objMsg.from);
                 setBtConnectionState(tablet[i].type, "connected");
             }
         }
@@ -445,7 +401,10 @@ function sendNewBoardNotice(nbr, ix) {
         }
     }
 }
-
+/**
+ * A message sent to check connectivity
+ * @param {string} rcvCode = "client" + Ix;
+ */
 function pingPong(rcvCode) {
     var d = new Date();
     var t = d.toLocaleTimeString();

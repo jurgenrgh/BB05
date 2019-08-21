@@ -40,7 +40,9 @@ var app = {
       console.log("screen width: ", screen.width, "screen height: ", screen.height);
       console.log("pixel ratio: ", window.devicePixelRatio);
   
-      screen.orientation.lock("portrait");
+      screen.orientation.lock("portrait").catch(error => {
+        console.log("screen orientation error: ", error);
+      });
   
       //Listener for bluetooth message
       networking.bluetooth.onReceive.addListener(onBtReceiveHandler);

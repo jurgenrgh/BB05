@@ -1,4 +1,4 @@
-//A js file intended solely for the BluetoothSettings.html module
+//A js file mainly called from the BluetoothSettings.html module
 //
 /*jshint esversion: 6 */
 ///////////////////////////////////////////////////////////////////////////////
@@ -85,7 +85,7 @@ function getBtDevices() {
             // name: String --> The human-readable name of the device.
             // paired: Boolean --> Indicates whether or not the device is paired with the system.
             // uuids: Array of String --> UUIDs of protocols, profiles and services advertised by the device.
-            console.log(i, devices[i].name, devices[i].address);
+            console.log("Paired Devices: ", i, devices[i].name, devices[i].address, devices[i].uuids);
             pairedBtNames[i] = devices[i].name;
             pairedBtAddresses[i] = devices[i].address;
         }
@@ -104,18 +104,19 @@ function getBtDevices() {
 
 /**
  * @description
- * Called by getDevices <br><br>
+ * Called by getDevices <br>
  * 
  * If this is a client there is only 1 name and 1 addr <br>
- * If this is a server there are 3 <br><br>
+ * If this is a server there are 3 (or more) <br>
  * 
  * Initializes the tablet array and assigns seatIx so that <br> 
  * tablet[].seatIx = 0,1,2,3  ~ N,E,S,W ~ (charCode + 3)(mod 4) <br>
  * i.e. the initial NSEW assignments come from the tablet names <br>
  * where charCode is the ASCII numerical code of the last character <br>
- * Thus last character (1,2,3,4) -> (N,E,S,W) <br><br>
+ * Thus last character (1,2,3,4) -> (N,E,S,W) <br>
  * 
  * tablet[] array initialization: <br>
+ * 
  * if this is a client (i.e. names&address list length = 1) <br>
  * serverTabletIx = 0; <br>
  * thisTabletIx = 1; <br>
@@ -124,7 +125,7 @@ function getBtDevices() {
  * tablet[0].seatIx = from names[0] <br> 
  * tablet[1].type = "client" <br>
  * tablet[1].seatIx = from thisTabletBtName <br>
- * also sets name, address, uuid, socket = -1 <br><br>
+ * also sets name, address, uuid, socket = -1 <br>
  * 
  * if this is the server (i.e. names&address list length = 3) <br>
  * serverTabletIx = 0; <br>
@@ -232,19 +233,20 @@ function assignBtFunction(names, addresses) {
 
 /**
  * @description
- * Called directly from onClick "Connect" on the Bluetooth page <br>
+ * Called automatically from getBtDevices() <br>
+ * Called manually via onClick "Connect" on the Bluetooth page <br>
  * Called also through a modal prompt on either server or client <br>
  * If server: finds next unconnected client and calls startBtListening(tabIx), sets waiting state <br>
- * If client: sets the correct waiting state and calls chainBtClentConnection() <br>
+ * If client: sets the correct waiting state and calls chainBtClientConnection() <br>
  */
 function makeBtConnection() {
     var client = "";
-    var tabIx; // tablet index for next connection
+    var tabIx; // tablet index for next connection 
     //console.log("Enter makeBtConnection");
     if (thisTabletIx == serverTabletIx) { //this is the server
         //console.log("Branch Connect Server", "Tablets: ", tablet);
         tabIx = findNextUnconnectedClient();
-        if (tabIx > 0) { //the clients have index 1,2,3
+        if (tabIx > 0) { //the clients have index 1,2,3 ...
             console.log("Connect server next tabIx = ", tabIx, tablet[tabIx]);
             setBtConnectionState("server", "waiting");
             startBtListening(tabIx);
@@ -307,9 +309,9 @@ function startBtListening(tabIx) {
 
                 var checkListener = networking.bluetooth.onAccept.hasListeners();
                 if (checkListener) {
-                    //console.log("Have listeners", checkListener);
+                    console.log("Have listeners", checkListener);
                 } else {
-                    //console.log("No Listeners", checkListener);
+                    console.log("No Listeners", checkListener);
                 }
             }, function (errorMessage) {
                 console.log("error from Listener");
@@ -342,7 +344,9 @@ function onBtAcceptConnectionHandler(acceptInfo) {
         return;
     }
     //tablet[tabIx].socket = acceptInfo.clientSocketId;
-    //console.log("socket set, socket, tabIx", acceptInfo.clientSocketId, tabIx, tablet);
+    console.log("onAcceptConnection ",
+             "ClientSocket= ", acceptInfo.clientSocketId,
+             " ServerSocket= ", acceptInfo.socketId, " tabIx= ", tabIx, tablet);
     nbrConnectedClients += 1;
     console.log("Nbr clients connected", nbrConnectedClients, tablet);
     if (nbrConnectedClients == 3) {
@@ -369,6 +373,50 @@ function onBtAcceptConnectionHandler(acceptInfo) {
         //testConnections(10);
     }
 }
+/**
+ * @description 
+ * Called when a message was received, i.e. in response to onReceive Event <br> 
+ * Outputs the raw message string to the HTML field on the BT page    <br>
+ * objReceived = JSON object <= parsed JSON string <= receiveInfo.data  <br>
+ * Calls msgInterpreter which handles input acc to message content  <br>
+ * The message text contains the "msg type" information, i.e. what to do next <br>
+ * @param {arrayBuffer} receiveInfo 
+ */
+function onBtReceiveHandler(receiveInfo) {
+    var socketId = receiveInfo.socketId;
+    var strReceived = stringFromArrayBuffer(receiveInfo.data);
+    var objReceived = {};
+
+    var textField = document.getElementById("msg-rcvd");
+    textField.value = "";
+
+    //console.log("Data received: ", strReceived);
+    objReceived = JSON.parse(strReceived);
+    //console.log("Obj received: ", objReceived);
+
+    // Message into Input field
+    textField.value = "From " + objReceived.from + ": " + objReceived.text;
+
+    M.updateTextFields();
+    M.textareaAutoResize(textField);
+    // Process the Message 
+    msgInterpreter(socketId, strReceived);
+}
+
+/**
+ * @description
+ * Response to onReceiveError Listener
+ * 
+ * @param {string} errorInfo Raw Text Message
+ */
+function onBtReceiveError(errorInfo) {
+    console.log("BT Error from Listener", errorInfo.errorMessage, errorInfo.socketId, errorInfo);
+    popupBox("Bluetooth Receive Error (Listener)", errorInfo.errorMessage + " socket " + errorInfo.socketId, "bt-error", "OK", "", "");
+
+    // if (errorInfo.socketId !== socketId) {
+    //     return;
+    //}
+}
 
 /**
  * @description
@@ -387,8 +435,11 @@ function chainBtClientConnection() {
         .then(tryBtClientConnection)
         .then(tryBtClientConnection)
         .then(tryBtClientConnection)
-        .catch();
+        .catch((err) => {
+            console.log("ClientConnection Error", "msg: ", err);
+        });
 }
+
 
 /**
  * @description
@@ -413,7 +464,7 @@ function tryBtClientConnection(uuidIx) {
             networking.bluetooth.connect(deviceAddress, uuid[uuidIx], function (socketId) {
                 thisClientSocketId = socketId;
                 tablet[thisTabletIx].socket = socketId;
-                console.log("socket set, socketId, tabIx ", socketId, thisTabletIx, tablet);
+                console.log("ClientSocket set, socketId, tabIx ", socketId, thisTabletIx, tablet);
                 setBtConnectionState("client1", "connected");
                 setBtConnectionState("server", "connected");
 
