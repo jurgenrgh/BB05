@@ -15,8 +15,8 @@ toc:
       - getContract
   - name: Bluetooth.js
     description:
-        A js file containing the Bluetooth Functions
-        Mainly called from BluetoothSettings.html  
+      A js file containing the Bluetooth Functions.
+      Mainly called from BluetoothSettings.html  
     children:
        - initBtSettingsPage
        - getBtDevices
@@ -24,6 +24,8 @@ toc:
        - makeBtConnection
        - startBtListening
        - onBtAcceptConnectionHandler
+       - onBtReceiveHandler
+       - onBtReceiveError
        - chainBtClientConnection
        - tryBtClientConnection
        - setPageBtConnectionState 
@@ -63,18 +65,101 @@ toc:
         The "Compass" is an SVG that appears at the upper lh corner
         of the Bidding Box Page
     children:
-      - drawCompass        
+       - drawCompass 
+  - name: data.js
+    description: Global variables and related Functions
+    children:
+      - callObj  
+      - getCommonCssColors
+  - name: director.js
+    description: 
+      A seperate page for all of the director controls
+    children:
+      - initDirSettingsPage
+      - handleSeatChange
+      - doSeatChange
+      - handleTableNumberChange
+      - handleSectionLetterChange
+      - handleFirstBoardChange
+      - handleLastBoardChange
+      - handleHandMinutesChange
+      - handleSessionMinutesChange
+      - handleAlertOwnChange
+      - handleAlertPartnerChange
+      - handleAlertScreenmateChange
+      - handleAlertBothOppsChange
+      - handleTrayTransferChange
+      - handleRotateBoardChange
+      - handleBidReconfirmChange
+      - handleNewBoardControlChange
+      - handleNewBidNotify
+      - initClockScreen
+      - startClocks
+      - stopClocks
+      - backUpOneBid
+      - initBoardsDisplay 
+  - name: globals.js
+    description:
+      Bluetooth Names and addresses - and all the global variables
+      are initialized. 
+    children:
+      - initAllBtGlobals  
+      - restoreAllBtGlobals 
+      - storeAllBtGlobals
+      - logBtGlobals
+      - initVariable
+      - initObject
+      - getIndex
+      - getHMS
+      - hmsToSeconds
+      - getSeatIxFromName   
+      - disableBBControlInput
+      - enableBBControlInput
+      - positionToSeatIx
+      - seatToClient
+      - checkMessageDestination
+      - arrayBufferFromString
+      - stringFromArrayBuffer
   - name: index.js
     description: App level initializations
     children:
       - app
       - showPage
       - hideKeyboard 
+  - name: Messaging.js
+    description:
+       Send and receive Bluetooth Messages
+    children:
+      - sendMessage    
+      - sendSeatIdToServer
+      - msgInterpreter
+      - pping
+      - sendBid
+      - sendAlert
+      - sendNewBoardNotice
+      - pingPong
+      - startBtConnectionTest
+      - stopBtConnectionTest
+  - name: ModalDialog.js
+    description:
+       This is a simple modal overlay containing a text message
+       and 0, 1 or 2 buttons (ok; yes/no).
+       There is a version with callbacks.
+    children:
+      - popupBox
+      - popupBoxTimed
+      - popupBoxCallback
+      - hidePopupBox
+      - okModalClicked
+      - yesModalClicked
+      - noModalClicked    
   - name: record.js
     description: Module describing the bidding record 
     children:
       - Bid
-      - makeBiddingRecordEntry
+      - BiddingRecord
+      - bidClassTest
+      - recordClassTest
       - drawBiddingRecordTable
       - initBiddingRecord
       - updateBiddingRecord
@@ -91,27 +176,5 @@ toc:
       - hiliteBiddingRecordCell
       - unhiliteBiddingRecordCell
       - makeBiddingRecordEntry
-  - name: director.js
-    description: 
-      A seperate table for all of the director controls
-    children:
-      - initDirSettingsPage
-      - handleSeatChange
-      - doSeatChange
-      - stopClocks
-      - backUpOneBid
-      - initBoardsDisplay
-  - name: ModalDialog.js
-    description:
-       This is a simple modal overlay containing a text message
-       and 0, 1 or 2 buttons (ok; yes/no).
-       There is a version with callbacks.
-    children:
-      - popupBox
-      - popupBoxTimed
-      - popupBoxCallback
-      - hidePopupBox
-      - okModalClicked
-      - yesModalClicked
-      - noModalClicked
+  
           

@@ -2,6 +2,14 @@
 // Bluetooth Names and addresses - and all the global variables
 // are initialized.
 // 
+/**
+ * @description
+ * Bluetooth Names and addresses - and all the global variables
+ * are initialized. If there is a stored value it is used; if not
+ * an initial value is assigned.
+ * So the returned value is either the initializer or the stored value,
+ * and the latter has preference.
+ */ 
 function initAllBtGlobals() {
 
     tablet[0] = {
@@ -56,13 +64,11 @@ function initAllBtGlobals() {
     relayRepCount = 32;
 }
 
-//////////////////////////////////////////////////////////////
-// Bluetooth Names and addresses - and all the global variables
-// are initialized. If there is a stored value it is used; if not
-// an initial value is assigned.
-// So the returned value is either the initializer or the stored value,
-// and the latter has preference.
-// 
+/**
+ * @description
+ * Bluetooth Names and addresses - and all the global variables
+ * are restored, i.e. retrieved from storage
+ */ 
 function restoreAllBtGlobals() {
 
     tablet[0] = initObject("tablet0", {
@@ -117,6 +123,11 @@ function restoreAllBtGlobals() {
     relayRepCount = initVariable("relayRepCount", 32);
 }
 
+/**
+ * @description
+ * Bluetooth Names and addresses - and all the global variables
+ * are stored in local storage
+ */ 
 function storeAllBtGlobals() {
     var strObj0 = JSON.stringify(tablet[0]);
     var strObj1 = JSON.stringify(tablet[1]);
@@ -149,6 +160,11 @@ function storeAllBtGlobals() {
     localStorage.setItem("relayRepCount", relayRepCount);
 }
 
+/**
+ * @description
+ * Bluetooth Names and addresses - and all the global variables
+ * are written to the log
+ */ 
 function logBtGlobals() {
     console.log("tablet0", tablet[0]);
     console.log("tablet1", tablet[1]);
@@ -177,11 +193,13 @@ function logBtGlobals() {
     console.log("relayRepCount", relayRepCount);
 }
 
-// strName = string key for this variable in localStorage
-// value = its initial value
-// the function assigns the given initial value to the variable
-// unless there is already a value in storage.
-//
+/**
+ * @description
+* Assign the given initial value to the variable
+* unless there is already a value in storage.
+* @param {string} strName :  key for this variable in localStorage
+* @param {any} value : the initial value
+*/
 function initVariable(strName, value) {
     var restoredValue = value;
     var vstr;
@@ -194,7 +212,12 @@ function initVariable(strName, value) {
     return restoredValue;
 }
 
-// When the stored value is a stringified object
+/**
+ * @description
+ * Initialize a stringified object
+ * @param {string} strName 
+ * @param {obj} obj 
+ */
 function initObject(strName, obj) {
     var restoredValue = obj;
     var vstr;
@@ -206,8 +229,13 @@ function initObject(strName, obj) {
     return restoredValue;
 }
 
-//arr: array of strings
-//Return index of ix-th element in alphabetical order
+/**
+ * @description
+ * Return index of ix-th element in alphabetical order
+ * @param {array} arr 
+ * @param {int} ix 
+ * @returns {int} k : position of arr[ix] in alphabetical order
+ */
 function getIndex(arr, ix) {
     var k = 0;
     for (j = 0; j < arr.length; j++) {
@@ -218,11 +246,21 @@ function getIndex(arr, ix) {
     return k;
 }
 
-// Given h, m, s numerically, get string HH:MM:SS
-// Leading zeros included
-// hTruncate = true -> no leading zero hours
-// mTruncate = true -> no leading zero minutes
-//
+/**
+ * @description
+ * Given h, m, s numerically, get string HH:MM:SS
+ * Leading zeros included
+ * hTruncate = true -> no leading zero hours
+ * mTruncate = true -> no leading zero minutes
+ * 
+ * @param {int} hours 
+ * @param {int} minutes 
+ * @param {int} seconds 
+ * @param {Boolean} hTruncate 
+ * @param {Boolean} mTruncate 
+ * 
+ * @returns {string} time 
+ */
 function getHMS(hours, minutes, seconds, hTruncate, mTruncate) {
     var totSecs = 3600 * hours + 60 * minutes + seconds;
 
@@ -264,9 +302,15 @@ function getHMS(hours, minutes, seconds, hTruncate, mTruncate) {
     return timeTxt;
 }
 
-// Input hh:mm:ss string
-// Output total seconds
-//
+/**
+ * @description
+ * Input hh:mm:ss string
+ * Output total seconds
+ * 
+ * @param {string} hms 
+ * 
+ * @returns {int} seconds
+ */
 function hmsToSeconds(hms) {
     var sep = hms.split(':');
     var h, m, s;
@@ -368,14 +412,19 @@ function enableBBControlInput() {
     su.style.color ='black';
 }
 
-///////////////////////////////////////////////////////
-// Get seatIx from relative position code
-// i.e. relative position 'l', 'r', 'p', 'm'
-// meaning LHO, RHO, Partner, Screenmate are converted into
-// seat index [0,1,2,3] meaning [N,E,S,W]
-// input may also be 'n' or 'N' or 'north' or 'North' etc
-// Returns -1 if not one of the above
-//
+/**
+ * @description
+ * Get seatIx from relative position code
+ * i.e. relative position 'l', 'r', 'p', 'm'
+ * meaning LHO, RHO, Partner, Screenmate are converted into
+ * seat index [0,1,2,3] meaning [N,E,S,W]
+ * input may also be 'n' or 'N' or 'north' or 'North' etc
+ * Returns -1 if not one of the above
+ * 
+ * @param {string} posCode 
+ * 
+ * @returns {int} seatIx
+ */
 function positionToSeatIx(posCode) {
     var low = posCode.toLowerCase();
     var seatIx = -1; //receiving seat index
@@ -416,9 +465,15 @@ function positionToSeatIx(posCode) {
     return seatIx;
 }
 
-//For server tablet only: given seat name, e.g. "North"
-// return client name, e.g. "client1"  
-// (currently not used)
+/**
+ * @description
+ * For server tablet only: given seat name, e.g. "North"
+ * return client name, e.g. "client1" 
+ * 
+ * @param {string} seat 
+ * 
+ * @returns {string}
+ */
 function seatToClient(seat){
     var client;
     for(i = 0; i < 4; i++)
@@ -429,6 +484,7 @@ function seatToClient(seat){
 }
 
 /**
+ * @description
  * Translate the destination code acc to message tag
  * 
  * @param {string} rcvCode 
@@ -452,10 +508,13 @@ function checkMessageDestination( rcvCode, tag ){
 }
 
 /**
+ * @description
  * Data sent and received on the bluetooth socket is an unstructured <br>
  * binary "arrayBuffer". <br>
  * Here Output strings are converted to the buffer format <br> 
  * @param {string} str 
+ * 
+ * @returns {arrayBuffer} binary form of input string
  */
 function arrayBufferFromString(str) {
     var buf, bufView, i, j, ref, strLen;
@@ -469,13 +528,15 @@ function arrayBufferFromString(str) {
     return buf;
   }
   /**
+   * @description
    * Data sent and received on the bluetooth socket is an unstructured <br>
    * binary "arrayBuffer". <br>
    * Output strings are converted to the buffer format <br>
    * Here we convert the buffer contents back into a string <br> 
    * @param {arrayBuffer} buf 
+   * @returns {string} stringified buffer
    */
-  function stringFromArrayBuffer(buf) {
+function stringFromArrayBuffer(buf) {
     return String.fromCharCode.apply(null, new Uint8Array(buf));
   }
     
