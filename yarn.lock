@@ -254,10 +254,10 @@ cordova-plugin-globalization@~1.0.3:
   resolved "https://registry.yarnpkg.com/cordova-plugin-globalization/-/cordova-plugin-globalization-1.0.9.tgz#465b9998feea0b888844d09cd7da02bfa26cb7a3"
   integrity sha1-RluZmP7qC4iIRNCc19oCv6Jst6M=
 
-cordova-plugin-inappbrowser@~1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-1.3.0.tgz#16f0085300bc9871733cb1f9a9778d2f14fb6187"
-  integrity sha1-FvAIUwC8mHFzPLH5qXeNLxT7YYc=
+cordova-plugin-inappbrowser@~3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-3.1.0.tgz#61520b8de3eb75b37842d2340f5d90a84a073747"
+  integrity sha512-YqrZfYgbGTS20SFID0mrRxud312VH072QVlFonCAkPgtGg1Svy7lELOCNFd+KU7t4mVtZeTEjZPEeefvjaetwQ==
 
 cordova-plugin-media-capture@~1.2.0:
   version "1.2.0"
@@ -273,6 +273,11 @@ cordova-plugin-network-information@~1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-network-information/-/cordova-plugin-network-information-1.2.1.tgz#1fd7b72af0662415b955c57638f7b7767c843d98"
   integrity sha1-H9e3KvBmJBW5VcV2OPe3dnyEPZg=
+
+cordova-plugin-networking-bluetooth@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-networking-bluetooth/-/cordova-plugin-networking-bluetooth-1.0.3.tgz#1677d100f0b5df529858f9b8a310c3f75bde846d"
+  integrity sha1-FnfRAPC131KYWPm4oxDD91vehG0=
 
 cordova-plugin-splashscreen@~3.2.1:
   version "3.2.2"
