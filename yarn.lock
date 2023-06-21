@@ -142,9 +142,9 @@ concat-map@0.0.1:
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
 cookiejar@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.2.tgz#dd8a235530752f988f9a0844f3fc589e3111125c"
-  integrity sha512-Mw+adcfzPxcPeI+0WlvRrr/3lGVO0bD75SxX6811cxSh1Wbxx7xZBGK1eVtDf6si8rg2lhnUjsVLMFMfbRIuwA==
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.4.tgz#ee669c1fea2cf42dc31585469d193fef0d65771b"
+  integrity sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==
 
 cordova-android@^7.1.4:
   version "7.1.4"
@@ -273,6 +273,11 @@ cordova-plugin-network-information@~1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-network-information/-/cordova-plugin-network-information-1.2.1.tgz#1fd7b72af0662415b955c57638f7b7767c843d98"
   integrity sha1-H9e3KvBmJBW5VcV2OPe3dnyEPZg=
+
+cordova-plugin-networking-bluetooth@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-networking-bluetooth/-/cordova-plugin-networking-bluetooth-1.0.3.tgz#1677d100f0b5df529858f9b8a310c3f75bde846d"
+  integrity sha512-G0ckoP+Z7XgkNAbYTRgKo2Bq7uD2/8bMsB85MJ/6MvuMpaS28Ee2T0GduFy6FP+bAL6zrHnbiigzZiIYI6kWNg==
 
 cordova-plugin-splashscreen@~3.2.1:
   version "3.2.2"
